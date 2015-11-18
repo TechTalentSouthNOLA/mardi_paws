@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'awesome_print'
 gem "paperclip", "~> 4.3"
+gem 'font-awesome-rails'
 group :development, :test do
   gem 'byebug'
 end
