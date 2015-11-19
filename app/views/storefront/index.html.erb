@@ -1,0 +1,21 @@
+<h1>Welcome to Mardi Paws!</h1>
+<p>Where you can jazz up your doggies like it's Mardi Gras...</p>
+
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= image_tag product.avatar.url(:medium) %>
+          <a href="#">
+            <span class="pull-right text-right">
+              <h5><%= product.current_price %></h5>
+            </span>
+            <h5><%= product.name %></h5>
+            <small>quick info</small>
+          </a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
