@@ -7,13 +7,30 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <%= image_tag product.avatar.url(:medium) %>
-          <a href="#">
+          <a href="#" data-toggle="modal" data-target="#product-<%= product.id %>-modal">
             <span class="pull-right text-right">
-              <h5><%= product.current_price %></h5>
+              <h5><%= number_to_currency product.current_price %></h5>
             </span>
             <h5><%= product.name %></h5>
             <small>quick info</small>
           </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="product-<%= product.id %>-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4><%= product.name %> <small><%= product.brand.try(:name) %></small></h4>
+            <p>
+              <%= image_tag product.avatar.url(:large) %>
+            </p>
+            <p><%= product.description %></p>
+            <h5><%= number_to_currency product.current_price %></h5>
+          </div>
         </div>
       </div>
     </div>
