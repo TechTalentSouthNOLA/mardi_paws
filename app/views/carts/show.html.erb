@@ -3,19 +3,23 @@
 <table class="table">
   <thead>
     <tr>
+      <th></th>
       <th>Product</th>
       <th>Quantity</th>
       <th>Unit Price</th>
       <th>Total Price</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @cart.line_items.each do |item| %>
       <tr>
+        <td><%= image_tag item.product.avatar.url(:thumb) %></td>
         <td><%= item.product.name %></td>
         <td><%= item.quantity %> &times;</td>
         <td><%= number_to_currency(item.price) %></td>
         <td><%= number_to_currency(item.total_price) %></td>
+        <td><%= link_to fa_icon('minus', text: 'Remove from Cart'), item, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
