@@ -11,11 +11,12 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <%= image_tag product.avatar.url(:medium) %>
+          <span class="pull-right text-right">
+            <h5><%= number_to_currency product.current_price %></h5>
+            <%= button_to 'Add to Cart', line_items_path(product_id: product), class: 'btn btn-primary btn-xs' %>
+          </span>
+          <h5><%= product.name %></h5>
           <a href="#" data-toggle="modal" data-target="#product-<%= product.id %>-modal">
-            <span class="pull-right text-right">
-              <h5><%= number_to_currency product.current_price %></h5>
-            </span>
-            <h5><%= product.name %></h5>
             <small>quick info</small>
           </a>
         </div>
@@ -34,6 +35,7 @@
             </p>
             <p><%= product.description %></p>
             <h5><%= number_to_currency product.current_price %></h5>
+            <%= button_to 'Add to Cart', line_items_path(product_id: product), class: 'btn btn-primary' %>
           </div>
         </div>
       </div>
