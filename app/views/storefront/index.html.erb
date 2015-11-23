@@ -1,5 +1,9 @@
-<h1>Welcome to Mardi Paws!</h1>
-<p>Where you can jazz up your doggies like it's Mardi Gras...</p>
+<% if params[:cat_id] %>
+  <h1>All Mardi Paws <span class="text-warning"><%= @category.name.capitalize %></span></h1>
+<% else %>
+  <h1>All Mardi Paws Products</h1>
+<% end %>
+<p>I'm a tag line.</p>
 
 <div class="row">
   <% @products.each do |product| %>
