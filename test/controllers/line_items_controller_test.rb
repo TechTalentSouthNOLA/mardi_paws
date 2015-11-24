@@ -2,6 +2,7 @@ require 'test_helper'
 
 class LineItemsControllerTest < ActionController::TestCase
   setup do
+    @request.env['HTTP_REFERER'] = 'http://test.host/carts/1'
     @line_item = line_items(:one)
   end
 
@@ -44,6 +45,6 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, id: @line_item
     end
 
-    assert_redirected_to line_items_path
+    assert_redirected_to cart_path(1)
   end
 end
