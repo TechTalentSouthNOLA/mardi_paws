@@ -1,24 +1,47 @@
-<p id="notice"><%= notice %></p>
+<h2 class="pull-right"><small>Order #<%= @order.id %></small></h2>
+<h1>Order Details</h1>
 
 <p>
-  <strong>Ship name:</strong>
-  <%= @order.ship_name %>
-</p>
-
-<p>
-  <strong>Ship address:</strong>
+  <strong>Ship To:</strong><br>
+  <%= @order.ship_name %><br>
   <%= @order.ship_address %>
 </p>
 
 <p>
-  <strong>Payment type:</strong>
+  <strong>Payment Type:</strong>
   <%= @order.payment_type %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @order.user %>
+  <%= @order.user.try(:email) %>
 </p>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.line_items.each do |item| %>
+      <tr>
+        <td><%= image_tag item.product.avatar.url(:thumb) %></td>
+        <td><%= item.product.name %></td>
+        <td><%= item.quantity %> &times;</td>
+        <td><%= number_to_currency(item.price) %></td>
+        <td><%= number_to_currency(item.total_price) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Order Subtotal:  <%= number_to_currency(@order.subtotal) %></h3>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
