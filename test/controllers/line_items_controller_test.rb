@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class LineItemsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @request.env['HTTP_REFERER'] = 'http://test.host/carts/1'
     @line_item = line_items(:one)

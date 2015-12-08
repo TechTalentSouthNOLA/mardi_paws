@@ -3,11 +3,11 @@
 one:
   ship_name: MyString
   ship_address: MyText
-  payment_type: MyString
-  user_id: 
+  payment_type: Paypal
+  user_id: 1
 
 two:
   ship_name: MyString
   ship_address: MyText
-  payment_type: MyString
-  user_id: 
+  payment_type: Paypal
+  user_id: 1
